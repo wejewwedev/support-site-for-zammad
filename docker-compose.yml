@@ -1,0 +1,15 @@
+version: '2.6.1'
+
+services:
+  logussupportpage:
+    image: ${DOCKER_REGISTRY}logussupportpage
+    build:
+      context: .
+      dockerfile: Logus.SupportPage/Dockerfile
+    env_file: .env
+    environment:
+        ZammadServerAddress: ${ZAMMAD_ADDRESS}
+        ApiKeyZammadServer: ${API_KEY}
+        PhoneNumberOfSupportService: ${SUPPORT_PHONE_NUMBER}
+    ports:
+      - "7700:80"
